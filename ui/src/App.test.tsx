@@ -3,6 +3,6 @@ import { App } from './App';
 
 test('renders learn react link', () => {
   render(<App />);
-  const elem = screen.getByText(/Life Manager/i);
+  const elem = screen.getByText(/Backend/i);
   expect(elem).toBeInTheDocument();
 });

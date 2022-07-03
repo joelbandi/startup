@@ -1,0 +1,28 @@
+version: '3'
+services:
+  api:
+    container_name: 'api'
+    build:
+      context: api
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./api:/api
+  ui:
+    container_name: 'ui'
+    build:
+      context: ui
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /ui/node_modules
+      - ./ui:/ui
+  nginx:
+    container_name: 'nginx'
+    depends_on:
+      - api
+      - ui
+    restart: always
+    build:
+      context: nginx
+      dockerfile: Dockerfile.dev
+    ports:
+      - '5000:80'

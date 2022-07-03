@@ -1,0 +1,11 @@
+FROM node:16.13.0
+
+WORKDIR '/ui'
+
+COPY package.json package-lock.json ./
+RUN npm install
+
+COPY . .
+
+ENV PORT 3080
+CMD ["npm", "run", "start"]
