@@ -1,4 +1,4 @@
-# Template ui/api app structure for quickly going from zero to startup
+# Template ui/api app structure for quickly going from idea to startup
 
 Can be easily extended with multiple microservices!
 
