@@ -48,6 +48,7 @@ Tech Stack
   1. Install `docker` if required. https://www.docker.com/
   2. Run `docker-compose up`. Add `-d` option to run in detached mode.
   3. Run `docker exec api bundle exec rails db:create db:migrate`
+  4. http://localhost:5000
 
 ### Installing new gems in `api/`
   1. Add new gem to `Gemfile`
