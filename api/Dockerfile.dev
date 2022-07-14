@@ -3,6 +3,7 @@ FROM ruby:3.1.0
 WORKDIR '/api'
 
 COPY Gemfile Gemfile.lock ./
+RUN bundle config unset frozen
 RUN bundle install
 
 COPY ./entrypoint.sh /
