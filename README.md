@@ -18,8 +18,8 @@ Features
  4. `nodejs 16.13.0`
  5. Docker for development
  6. Postgresql for persistence
- 7. Easy secret management!
- 8. Sideqik for asynchronous jobs (coming soon)
+ 7. Secret management with rails encrypted credentials
+ 8. Sideqik for asynchronous jobs
  9. Circle CI config (coming soon)
  10. Kubernetes for container orchestration (coming soon)
  11. AWS for deployment (coming soon)
@@ -40,6 +40,17 @@ Features
 └─────────┘           │       │     └───────►              ├────────►              │
                       │       │             │    api       │        │  postgresql  │
                       └───────┘             │              │        │              │
+                                            │              │        │              │
+                                            └────.│.───────┘        └──────────────┘
+                                                 .│.
+                                                 .│.
+                                                 .│.
+                                                 .│.
+                                            ┌────.│.───────┐        ┌──────────────┐
+                                            │              │        │              │
+                                            │              │        │              │
+                                            │    sidekiq   ├────────►    redis     │
+                                            │              │        │              │
                                             │              │        │              │
                                             └──────────────┘        └──────────────┘
 ```

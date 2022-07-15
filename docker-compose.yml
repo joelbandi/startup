@@ -1,6 +1,28 @@
 version: '3'
 services:
+  redis:
+    container_name: 'redis'
+    image: 'redis:7.0-alpine'
+    volumes:
+      - './api/tmp/redis:/data'
+  sidekiq:
+    container_name: 'sidekiq'
+    build:
+      context: api
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./api:/api
+      - ./api/tmp
+    depends_on:
+      - 'db'
+      - 'redis'
+    command: bundle exec sidekiq
+    environment:
+      - REDIS_URL=redis://redis:6379/1
+      - POSTGRES_PASSWORD=db_pwd
+    env_file: .env
   db:
+    container_name: 'db'
     image: 'postgres:14.4-alpine'
     environment:
       - POSTGRES_PASSWORD=db_pwd
@@ -13,10 +35,12 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - ./api:/api
+      - ./api/tmp
     depends_on:
       - db
     environment:
       - POSTGRES_PASSWORD=db_pwd
+      - REDIS_URL=redis://redis:6379/1
     env_file: .env
   ui:
     container_name: 'ui'
