@@ -28,6 +28,10 @@ ui/npm-debug.log*
 ui/yarn-debug.log*
 ui/yarn-error.log*
 
+# env and key files
+.env
+*.key
+
 # misc-------------
 .DS_Store
 .vscode/*

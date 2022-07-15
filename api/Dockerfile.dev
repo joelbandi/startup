@@ -1,4 +1,7 @@
 FROM ruby:3.1.0
+RUN apt update -qq && apt install -y nano
+ENV RAILS_ENV=development
+ENV EDITOR=nano
 
 WORKDIR '/api'
 

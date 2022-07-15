@@ -17,6 +17,7 @@ services:
       - db
     environment:
       - POSTGRES_PASSWORD=db_pwd
+    env_file: .env
   ui:
     container_name: 'ui'
     build:
