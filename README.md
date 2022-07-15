@@ -57,6 +57,14 @@ Features
 
 ## Development
 
+### 4-step Quick start developement
+  1. `git clone git@github.com:joelbandi/startup.git && cd startup/`
+  2. `echo "RAILS_MASTER_KEY=<random 32-bit hex code>" > .env`
+  3. `docker-compose up -d`
+  4. `docker exec api bundle exec rails db:create db:migrate`
+
+Then visit http://localhost:5000
+
 ### Starting the servers for development
   1. Install `docker` if required. https://www.docker.com/
   2. Create three 32-bit hex codes randomly and make note of them in a secure place. This is your master keys for all your environments so avoid committing this into your github.
