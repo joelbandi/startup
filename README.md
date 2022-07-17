@@ -58,7 +58,7 @@ Features
 ## Development
 
 ### 4-step Quick start developement
-  1. `git clone git@github.com:joelbandi/startup.git && cd startup/`
+  1. `git clone <git url for your repo created from this template> && cd <your dir>`
   2. `echo "RAILS_MASTER_KEY=<random 32-bit hex code>" > .env`
   3. `docker-compose up -d`
   4. `docker exec api bundle exec rails db:create db:migrate`
