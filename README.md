@@ -59,7 +59,7 @@ Features
 
 ### 4-step Quick start developement
   1. `git clone <git url for your repo created from this template> && cd <your dir>`
-  2. `echo "RAILS_MASTER_KEY=<random 32-bit hex code>" > .env`
+  2. `echo "RAILS_MASTER_KEY=$(hexdump -vn16 -e'4/4 "%08X" 1 "\n"' /dev/urandom)" > .env`
   3. `docker-compose up -d`
   4. `docker exec api bundle exec rails db:create db:migrate`
 
