@@ -66,7 +66,7 @@ Features
 
 Then visit http://localhost:5000
 
-### Starting the servers for development
+### Starting the servers for development (longer version)
   1. Install `docker` if required. https://www.docker.com/
   2. Create three 32-bit hex codes randomly and make note of them in a secure place. This is your master keys for all your environments so avoid committing this into your github.
        - One for development env. This is to be shared with every developer in your team.
