@@ -1,0 +1,49 @@
+version: 2.1
+jobs:
+  build_and_test_ui:
+    docker:
+      - image: cimg/base:current
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: 'Build ui'
+          command: docker build -t startup_ui:$CIRCLE_BRANCH_$CIRCLE_SHA1 -f ui/Dockerfile.dev ui
+      - run:
+          name: 'Run tests in ui'
+          command: docker run --rm startup_ui:$CIRCLE_BRANCH_$CIRCLE_SHA1 npm run test:ci
+      - run:
+          name: 'Run linter in ui'
+          command: docker run --rm startup_ui:$CIRCLE_BRANCH_$CIRCLE_SHA1 npm run lint
+  build_and_test_api:
+    docker:
+      - image: cimg/base:current
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: 'Build api'
+          command: docker build -t startup_api:$CIRCLE_BRANCH_$CIRCLE_SHA1 -f api/Dockerfile.dev api
+      - run:
+          name: 'Create env file'
+          command: |
+            echo RAILS_MASTER_KEY=$RAILS_MASTER_KEY > .env
+            echo RAILS_ENV=test >> .env
+      - run:
+          name: 'Launch PostgreSQL instance'
+          command: docker-compose up db 
+          background: true
+      - run:
+          name: 'Run migrations'
+          command: docker run --rm startup_api:$CIRCLE_BRANCH_$CIRCLE_SHA1 bundle exec rails db:create db:migrate
+      - run:
+          name: 'Run tests'
+          command: docker run --rm startup_api:$CIRCLE_BRANCH_$CIRCLE_SHA1 bundle exec rails test
+      - run:
+          name: 'Run Linter'
+          command: docker-compose exec startup_api:$CIRCLE_BRANCH_$CIRCLE_SHA1 bundle exec rubocop
+workflows:
+  build_and_test:
+    jobs:
+      - build_and_test_ui
+      - build_and_test_api
