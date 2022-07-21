@@ -12,7 +12,6 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - ./api:/api
-      - ./api/tmp
     depends_on:
       - 'db'
       - 'redis'

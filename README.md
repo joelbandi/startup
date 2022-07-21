@@ -121,7 +121,7 @@ Then visit http://localhost:5000
 
   1. Copy the master key pertaining to your environment into your clipboard.
   2. Run `api/shell` to enter the shell for api container.
-  3. Run `RAILS_ENV=<master key of the environment> bundle exec rails credentials:edit --environment <developent|test|production>`. The `--environment` flag is important for best practices.
+  3. Run `RAILS_MASTER_KEY=<master key of the environment> bundle exec rails credentials:edit --environment <developent|test|production>`. The `--environment` flag is important to place encrypted credential files in the correct directory.
   4. This opens up a nano instance with a `.yml` file loaded add any secrets to the file and save. This creates an `<env>.yml.enc` if its doesnt exist and saves your credentials there. If it does exists it modifies the file.
   5. Access this secret in your code using `Rails.application.credentials.<key>`.
   6. Make sure you commit any `<env>.yml.enc` you generate or mutate. This is encrypted by your master key so it should be safe as long as your master key is not compromised.

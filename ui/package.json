@@ -21,6 +21,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:ci": "CI=true react-scripts test --forceExit --detectOpenHandles",
     "eject": "react-scripts eject",
     "lint": "eslint src/**",
     "lint:fix": "eslint src/** --fix"
