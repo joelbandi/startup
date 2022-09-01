@@ -21,9 +21,9 @@ Features
  7. Secret management with rails encrypted credentials
  8. Sideqik for asynchronous jobs
  9. Rubocop + eslint for linting
- 9. Circle CI config (coming soon)
- 10. Kubernetes for container orchestration (coming soon)
- 11. AWS for deployment (coming soon)
+ 10. Lets Encrypt CA! (coming soon)
+ 11. Kubernetes for container orchestration (coming soon)
+ 12. AWS for deployment (coming soon)
 
 ```
                                             ┌──────────────┐
