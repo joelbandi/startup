@@ -6,6 +6,7 @@ services:
     volumes:
       - './api/tmp/redis:/data'
   sidekiq:
+    platform: linux/x86_64 # Uncomment this line if you are on ARM based machines
     container_name: 'sidekiq'
     build:
       context: api
@@ -28,6 +29,7 @@ services:
     volumes:
       - ./api/tmp/db:/var/lib/postgresql/data
   api:
+    platform: linux/x86_64 # Uncomment this line if you are on ARM based machines
     container_name: 'api'
     build:
       context: api
