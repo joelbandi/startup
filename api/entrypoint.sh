@@ -1,7 +1,9 @@
 #!/bin/bash
 set -e
 
-bundle exec rails log:clear tmp:clear
-bundle exec rails db:prepare
+if [[ -z "$SIDEKIQ_INSTANCE" ]]; then
+    bundle exec rails log:clear tmp:clear
+    bundle exec rails db:prepare 
+fi
 
 exec "$@"

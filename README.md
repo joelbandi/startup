@@ -59,13 +59,12 @@ Features
 
 ## Development
 
-### 4-step Quick start developement
+### 3-step Quick start developement
   1. `git clone <git url for your repo created from this template> && cd <your dir>`
   2. `echo "RAILS_MASTER_KEY=$(hexdump -vn16 -e'4/4 "%08X" 1 "\n"' /dev/urandom)" > .env`
   3. `docker-compose up -d`
-  4. `docker exec api bundle exec rails db:create db:migrate`
 
-Then visit http://localhost:5000
+Then visit http://localhost:5050. `api` container might take a few minutes to start for the first time.
 
 ### Starting the servers for development (longer version)
   1. Install `docker` if required. https://www.docker.com/
@@ -75,8 +74,9 @@ Then visit http://localhost:5000
        - One for production env. This is to be shared with members with production access only.
   2. Create `.env` file in the project root and add `RAILS_MASTER_KEY=development key from step 2`.
   3. Run `docker-compose up`. Add `-d` option to run in detached mode.
-  4. Run `docker exec api bundle exec rails db:create db:migrate`
-  5. http://localhost:5000
+  4. http://localhost:5050
+
+All dependencies and required libs for this app live completely in the docker container and isolated from your host machine. This means all the rails and npm commands must be run inside a shell process in the container.
 
 ### Installing new gems in `api/`
   1. Add new gem to `Gemfile`

@@ -20,6 +20,7 @@ services:
     environment:
       - REDIS_URL=redis://redis:6379/1
       - POSTGRES_PASSWORD=db_pwd
+      - SIDEKIQ_INSTANCE=1
     env_file: .env
   db:
     container_name: 'db'
