@@ -38,6 +38,7 @@ services:
       - ./api:/api
     depends_on:
       - db
+      - sidekiq
     environment:
       - POSTGRES_PASSWORD=db_pwd
       - REDIS_URL=redis://redis:6379/1
