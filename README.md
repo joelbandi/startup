@@ -22,9 +22,13 @@ Features
  8. Sideqik for asynchronous jobs
  9. Rubocop + eslint for linting
  10. CircleCI configuration (coming soon)
- 11. Lets Encrypt CA! (coming soon)
- 12. Kubernetes for container orchestration (coming soon)
- 13. AWS for deployment (coming soon)
+
+Take it all the way to production!
+ 11. AWS ECR for Docker image registry
+ 12. Lets Encrypt for SSL CA certs
+ 13. Kubernetes for container orchestration with EKS
+ 14. AWS Cloud services for deployment with Terraform
+ 15. DataDog for observability with Terraform
 
 ```
                                             ┌──────────────┐
