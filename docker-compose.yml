@@ -1,27 +1,5 @@
 version: '3'
 services:
-  redis:
-    container_name: 'redis'
-    image: 'redis:7.0-alpine'
-    volumes:
-      - './api/tmp/redis:/data'
-  sidekiq:
-    platform: linux/x86_64 # Uncomment this line if you are on ARM based machines
-    container_name: 'sidekiq'
-    build:
-      context: api
-      dockerfile: Dockerfile.dev
-    volumes:
-      - ./api:/api
-    depends_on:
-      - 'db'
-      - 'redis'
-    command: bundle exec sidekiq
-    environment:
-      - REDIS_URL=redis://redis:6379/1
-      - POSTGRES_PASSWORD=db_pwd
-      - SIDEKIQ_INSTANCE=1
-    env_file: .env
   db:
     container_name: 'db'
     image: 'postgres:14.4-alpine'
@@ -39,7 +17,6 @@ services:
       - ./api:/api
     depends_on:
       - db
-      - sidekiq
     environment:
       - POSTGRES_PASSWORD=db_pwd
       - REDIS_URL=redis://redis:6379/1

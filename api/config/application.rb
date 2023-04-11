@@ -26,7 +26,5 @@ module Api
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.hosts << 'api'
-
-    config.active_job.queue_adapter = :sidekiq
   end
 end
